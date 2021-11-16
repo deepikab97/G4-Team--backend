@@ -1,0 +1,61 @@
+
+
+.background-image{
+  background-image: url('http://localhost:4200/assets/images/background-23.jpg');
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+  .bg-video-wrap {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 80vh;
+    background: no-repeat center center/cover;
+  }
+  video {
+    
+    max-width: 100%;
+    height: auto;
+    
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: 1;
+    object-fit: cover; 
+    zoom: 80%;
+  }
+  .overlay {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(45deg, rgba(0,0,0,.3) 50%, rgba(0,0,0,.4) 50%);
+    background-size: 3px 3px;
+    z-index: 2;
+  }
+ 
+  .mat-fab, .mat-flat-button, .mat-mini-fab, .mat-raised-button {
+    color: white;
+    background-color: transparent;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 3;
+    max-width: 40vw;
+    width: 100vw;
+    height: 20vh;
+    font-family: 'Jura', sans-serif !important;
+    border:1px
+
+}
+
+
+@media only screen and (max-width: 600px) {
+  .nav-hide{
+      display: none;
+  }
+}

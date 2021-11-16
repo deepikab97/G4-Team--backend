@@ -1,0 +1,73 @@
+
+<div class="container-fluid pt-5 pb-5 pr-5 pl-5">
+  
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+    
+        <div class="card-body">
+          <div class="alert" [class.visible]="isVisible"> 
+            {{message}}
+          </div>
+<h3 class="text-center text-info">Add Batch</h3>
+
+
+<div class="col-md-6 offset-md-3 shadow-lg">
+  <form [formGroup]="batchForm" (ngSubmit)="onSubmit()">
+
+   <div class="form-group"> 
+     <label for="sportId">Select Sport</label>
+      <select formControlName="sportId" class="form-control" id="sportId" name="sportId"  [(ngModel)]="batch.sportId" [ngClass]="{ 'is-invalid': submitted && f.sportId.errors }">
+        <option type="number" *ngFor="let sport of sports" value="{{sport.id}}">{{sport.sportName}}</option>
+      </select>
+
+      <div *ngIf="submitted && f.sportId.errors" class="invalid-feedback">
+        <div *ngIf="f.sportId.errors.required">Sport is required</div>
+     </div>
+
+   </div>
+    
+    <div class="form-group ">    
+      <label for="startTime">Start Time</label>
+      <input formControlName="startTime" type="time" class="form-control" id="startTime" [(ngModel)]="batch.startTime"
+        name="startTime" placeholder="HH:mm:ss" min="05:00:00"  max="12:00:00" required
+        [ngClass]="{ 'is-invalid': submitted && f.startTime.errors }"/>
+
+        <div *ngIf="submitted && f.startTime.errors" class="invalid-feedback">
+          <div *ngIf="f.startTime.errors.required">Start Time required</div>
+       </div>
+
+    </div>
+
+    <div class="form-group ">    
+      <label for="endTime">End Time</label>
+      <input formControlName="endTime" type="time" class="form-control" id="endTime" [(ngModel)]="batch.endTime"
+        name="endTime" placeholder="HH:mm:ss" min="07:00:00"  max="12:00:00" required
+        [ngClass]="{ 'is-invalid': submitted && f.endTime.errors }"/>
+
+        <div *ngIf="submitted && f.endTime.errors" class="invalid-feedback">
+          <div *ngIf="f.endTime.errors.required">End Time required</div>
+       </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="size">Size</label>
+      <input formControlName="size" type="number" class="form-control"  id="size" [(ngModel)]="batch.size" name="size"
+         min="10" max="50" required  [ngClass]="{ 'is-invalid': submitted && f.size.errors }"/>
+         <div *ngIf="submitted && f.size.errors" class="invalid-feedback">
+          <div *ngIf="f.size.errors.required">Size is required</div>
+          <div *ngIf="f.size.errors.min">Size should be atleast 10</div>
+          <div *ngIf="f.size.errors.max">Size should not exceed 50</div>
+      </div>
+    </div>
+
+    <button class="btn btn-outline-success mb-3" type="submit">Add Batch <i class="fa fa-plus-square" aria-hidden="true"></i></button>
+  </form>
+
+</div>
+
+</div>
+</div>    
+</div>
+</div>
+</div>

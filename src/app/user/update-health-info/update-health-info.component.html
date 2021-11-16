@@ -1,0 +1,89 @@
+<div class="alert" [class.visible]="isVisible"> 
+  {{message}}
+</div>
+<h3 class="text-center text-info">Health-Information</h3>
+<div class="col-md-6 offset-md-3 shadow-lg">
+  <form  [formGroup]="healthInfoForm" (ngSubmit)="onSubmit()">
+    <div class="form-group ">     
+      <label for="height">Height (in cm)</label>
+      <input
+        formControlName="height"
+        type="number"
+        class="form-control"
+        id="height"
+        [(ngModel)]="healthInfo.height"
+        name="height"
+        placeholder="Height in cm" required
+        [ngClass]="{ 'is-invalid': submitted && f.height.errors }"/>
+
+        <div *ngIf="submitted && f.height.errors" class="invalid-feedback">
+          <div *ngIf="f.height.errors.required">Please enter height </div>
+          <div *ngIf="f.height.errors.min">Height should be atleast 60</div>
+          <div *ngIf="f.height.errors.max">Height should not exceed 244</div>
+       </div>
+    </div>
+
+    <div class="form-group">
+      <label for="weight">Weight (in kg)</label>
+      <input
+        formControlName="weight"
+        type="number"
+        class="form-control"
+        id="weight"
+        [(ngModel)]="healthInfo.weight"
+        name="weight"
+        placeholder="Weight in kg" required
+        [ngClass]="{ 'is-invalid': submitted && f.weight.errors }"/>
+
+        <div *ngIf="submitted && f.weight.errors" class="invalid-feedback">
+          <div *ngIf="f.weight.errors.required">Please enter weight</div>
+          <div *ngIf="f.weight.errors.min">Weight should be atleast 15</div>
+          <div *ngIf="f.weight.errors.max">Weight should not exceed 260</div>
+       </div>
+    </div>
+    <div class="form-group">
+        <label for="bmi">Body Mass Index</label>
+        <input
+        formControlName="bmi"
+          type="number"
+          class="form-control"
+          id="bmi"
+          [(ngModel)]="healthInfo.bmi"
+          name="bmi"
+          readonly
+        />
+        <div *ngIf="submitted && f.bmi.errors" class="invalid-feedback">
+          <div *ngIf="f.bmi.errors.required">Please enter bmi</div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="bloodGroup">Blood-Group</label>
+        <input
+        formControlName="bloodGroup"
+          type="text"
+          class="form-control"
+          id="bloodGroup"
+          [(ngModel)]="healthInfo.bloodGroup"
+          name="bloodGroup"
+          readonly
+          
+        />
+        <div *ngIf="submitted && f.bloodGroup.errors" class="invalid-feedback">
+          <div *ngIf="f.bloodGroup.errors.required">Please enter bloodGroup</div>
+          </div>
+      </div>
+        
+   
+
+
+         
+  
+
+    <button class="btn btn-outline-success mb-3" type="submit">Save</button>
+  </form>
+</div>
+
+<router-outlet></router-outlet>
+
+
+

@@ -1,0 +1,62 @@
+<div class="container-fluid pt-4 pb-5 pr-5 pl-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+    
+    <div class="card-body">
+
+
+<div class="alert" [class.visible]="isVisible"> 
+  {{message}}
+</div>
+<h3 class="text text-center text-info">Batches</h3>
+    <mat-form-field>
+      <h5 class="text-dark ">Filter</h5>
+      <input matInput (keyup)="applyFilter($event.target.value)" >
+    </mat-form-field>
+<mat-table #table [dataSource]="dataSource" matSort matSortActive="active" matSortDirection="desc">
+    <ng-container matColumnDef="sportName">
+      <mat-header-cell *matHeaderCellDef> <h6>Sport</h6></mat-header-cell>
+      <mat-cell *matCellDef="let batch"> {{batch.sportName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="startTime">
+      <mat-header-cell *matHeaderCellDef> <h6>Start Time </h6></mat-header-cell>
+      <mat-cell *matCellDef="let batch"> {{batch.startTime}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="endTime">
+      <mat-header-cell *matHeaderCellDef><h6>End Time </h6></mat-header-cell>
+      <mat-cell *matCellDef="let batch"> {{batch.endTime}} </mat-cell>
+    </ng-container>
+      <ng-container matColumnDef="size">
+        <mat-header-cell *matHeaderCellDef><h6> Size </h6></mat-header-cell>
+        <mat-cell *matCellDef="let batch"> {{batch.size}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef> <h6>Action </h6> </mat-header-cell>
+        <mat-cell *matCellDef="let batch">
+            <div *ngIf="batch.active === true; then thenBlock else elseBlock">    
+            </div>
+            <ng-template class="text-left" #thenBlock> 
+                <button mat-raised-button class="btn-outline-info" (click)="updateBatch(batch.id)"><span class="show-icons">Update </span> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> 
+                <button mat-raised-button class=" btn-outline-danger" (click)="disableBatch(batch.id)"><span class="show-icons">Disable </span> <i class="fa fa-trash" aria-hidden="true"></i></button>
+            </ng-template>
+            <ng-template #elseBlock>
+               <button mat-raised-button  class="btn-outline-success" (click)="enableBatch(batch.id)"><span class="show-icons">Enable </span> <i class="fa fa-check-square-o" aria-hidden="true"></i></button>
+          </ng-template>
+        </mat-cell>
+      </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+</mat-table>
+
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons>
+</mat-paginator>
+
+      
+    </div>
+  </div>
+</div>
+</div>
+</div>

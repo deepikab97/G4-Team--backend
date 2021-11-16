@@ -1,0 +1,116 @@
+<!-- 
+
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="unlock-request">Unlock Requests</a>
+    </div>
+  </nav>
+  
+
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMyAccount" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Reports
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMyAccount">
+              <a class="dropdown-item" routerLink="sport-report">Sport</a>
+              <a class="dropdown-item" routerLink="batch-report">Batch</a>
+              <a class="dropdown-item" routerLink="plan-report">Plan</a>
+            </div>
+    </div>
+  </nav>
+
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMyAccount" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Manager
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMyAccount">
+<<<<<<< HEAD
+              <a class="dropdown-item" routerLink="sport-report">Add Manager</a>
+=======
+              <a class="dropdown-item" routerLink="add-manager">Add Manager</a>
+>>>>>>> master
+              <a class="dropdown-item" routerLink="view-managers">Manager List</a>
+              
+            </div>
+    </div>
+  </nav>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMyAccount" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sports
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMyAccount">
+              <a class="dropdown-item" routerLink="add-sport">Add Sport</a>
+              <a class="dropdown-item" routerLink="view-sports">View-Sport</a>
+              
+            </div>
+    </div>
+    <li class="nav-item pt-3 pr-3  pl-5">
+      <div class="dropdown">
+       <div class="text-dark font-weight-bolder " >Hi {{ firstname }} <i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
+  
+        <div class="dropdown-content">
+          <mat-option routerLink="view-profile">View Profile <i class="fa fa-user-circle" aria-hidden="true"></i></mat-option>
+          <mat-option routerLink="change-password" >Edit Password <i class="fa fa-cog" aria-hidden="true"></i></mat-option>
+          <mat-option routerLink="health-info">Health Info <i class="fa fa-heartbeat" aria-hidden="true"></i></mat-option>
+          <mat-option  routerLink="/login" (click)="this.app.logout()">Logout <i class="fa fa-sign-out" aria-hidden="true"></i></mat-option>
+        </div>
+      </div>
+    </li>
+  </nav> -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+        <a class="nav-link" routerLink="unlock-request">Unlock Requests</a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMyAccount" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Reports
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMyAccount">
+            <a class="dropdown-item" routerLink="sport-report">Sport</a>
+            <a class="dropdown-item" routerLink="batch-report">Batch</a>
+            <a class="dropdown-item" routerLink="plan-report">Plan</a>
+        </div>
+    </div>
+
+</nav>
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMyAccount" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Manager
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMyAccount">
+            <a class="dropdown-item" routerLink="add-manager">Add Manager</a>
+            <a class="dropdown-item" routerLink="view-managers">Manager List</a>
+
+        </div>
+    </div>
+</nav>
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMyAccount" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sports
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMyAccount">
+            <a class="dropdown-item" routerLink="add-sport">Add Sport</a>
+            <a class="dropdown-item" routerLink="view-sports">View-Sport</a>
+
+        </div>
+    </div>
+    <div class="logout-button ">
+      <div class="dropdown ">
+          <div class="text-dark font-weight-bolder text-primary " >Hi {{ userName }} <i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
+     
+           <div class="dropdown-content">
+             <mat-option routerLink="view-profile">View Profile <i class="fa fa-user-circle" aria-hidden="true"></i></mat-option>
+             <mat-option routerLink="change-password" >Edit Password <i class="fa fa-cog" aria-hidden="true"></i></mat-option>
+             <mat-option routerLink="health-info">Health Info <i class="fa fa-heartbeat" aria-hidden="true"></i></mat-option>
+          
+           </div>
+         </div>
+
+    </div>
+</nav>

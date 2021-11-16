@@ -1,0 +1,15 @@
+<div class="container-fluid mt-5 padding">
+    <div class="col-sm-4 inline-block">
+        <h3>{{planName}}</h3>
+        <img mat-card-image src="../../../../assets/images/cricket.jpg">
+    </div>
+    <div class="col-sm-8 inline-block">
+        
+        <mat-card *ngFor="let comment of comments " >
+            <mat-card-content>
+                <p>{{comment.comment}}</p>
+                <p>{{comment.firstName}} {{comment.lastName}}  {{comment.commentedOn | date}}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

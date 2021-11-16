@@ -1,0 +1,40 @@
+<div class="container-fluid pt-5  pr-5 pl-5 padding">
+
+    <div class="row">
+        <div class="col-md-8 justify-content-center">
+            <div class="card text-white border-info  mb-3">
+
+                <div class="card-body">
+                    <div class="alert" [class.visible]="isVisible">
+                        {{message}}
+                    </div>
+                    <h3 class="text-center text-info">Give review</h3>
+
+                    <div class="col-md-6 offset-md-3 ">
+                        <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+
+                            <div class="form-group">
+
+                                <textarea formControlName="comment" class="form-control" id="comment" name="comment"
+                                    [(ngModel)]="memberComment"
+                                    [ngClass]="{ 'is-invalid': submitted && c.comment.errors }"
+                                    placeholder="what is your view?" rows="4" min="10" max="255" required></textarea>
+                                <div *ngIf="submitted && c.comment.errors" class="invalid-feedback">
+                                    <div *ngIf="c.comment.errors.required">Comment is required</div>
+                                    <div *ngIf="c.comment.errors.min">Type at atleast 10 characters</div>
+                                    <div *ngIf="c.comment.errors.max">Maximum 255 characters allowed</div>
+                                </div>
+                               
+                                <button class="btn btn-outline-success mb-3" type="submit">Add Comment <i
+                                        class="fa fa-plus-square" aria-hidden="true"></i></button>
+
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

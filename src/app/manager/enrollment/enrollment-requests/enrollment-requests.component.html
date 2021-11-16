@@ -1,0 +1,83 @@
+
+<div class="container-fluid pt-5 pb-5 pr-5 pl-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+    
+    <div class="card-body">
+
+
+<h3 class="text-info text-center">
+  Enrollment Requests
+</h3>
+
+<div class="alert" [class.visible]="isVisible"> 
+  {{message}}
+</div>
+<div *ngIf="length===0"> 
+<h3 class="text-center text-danger">No data present</h3>
+</div>
+
+  <mat-form-field class="d-flex">
+    <h5 class="text-dark ">Filter</h5>
+    <input class="justify-content-center" matInput (keyup)="applyFilter($event.target.value)" >
+  </mat-form-field>
+
+<mat-table #table [dataSource]="dataSource" matSort matSortActive="startDate" matSortDirection="asc">
+  <ng-container matColumnDef="startDate">
+    <mat-header-cell  *matHeaderCellDef> <h6>Start Date</h6> </mat-header-cell>
+    <mat-cell *matCellDef="let enrollments"> {{enrollments.startDate}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="availability">
+    <mat-header-cell *matHeaderCellDef><h6> Availability </h6></mat-header-cell>
+    <mat-cell *matCellDef="let enrollments"> {{enrollments.availability}} </mat-cell>
+  </ng-container>
+    <ng-container matColumnDef="startTime"> 
+      <mat-header-cell *matHeaderCellDef><h6> Start Time</h6> </mat-header-cell>
+      <mat-cell *matCellDef="let enrollments"> {{enrollments.startTime}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="endTime">
+      <mat-header-cell *matHeaderCellDef><h6> End Time</h6> </mat-header-cell>
+      <mat-cell *matCellDef="let enrollments"> {{enrollments.endTime}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="planSportName">
+      <mat-header-cell *matHeaderCellDef><h6>Sport Name</h6> </mat-header-cell>
+      <mat-cell *matCellDef="let enrollments"> {{enrollments.planSportName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="userFirstName">
+      <mat-header-cell *matHeaderCellDef><h6>User Name</h6> </mat-header-cell>
+      <mat-cell *matCellDef="let enrollments"> {{enrollments.userFirstName}} {{enrollments.userLastName}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef><h6>Status</h6> </mat-header-cell>
+      <mat-cell *matCellDef="let enrollments"> {{enrollments.status}} </mat-cell>
+    </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef><h6> Action</h6> </mat-header-cell>
+        <mat-cell *matCellDef="let enrollments">
+            <div *ngIf="enrollments.availability>0 && (enrollments.status==='PENDING'  || enrollments.status==='WAITING'); then thenBlock">    
+            </div>
+            <div *ngIf="enrollments.availability===0 && enrollments.status==='PENDING'; then elseBlock">    
+            </div>
+            <ng-template #thenBlock>
+                <button mat-stroked-button class=" btn-outline-info" (click)="updateEnrollment(enrollments)">Approve <i class="fa fa-check" aria-hidden="true"></i></button>
+            </ng-template>
+            <ng-template #elseBlock>
+              <button mat-stroked-button color="warn" (click)="updateEnrollment(enrollments)" >Waiting <i class="fa fa-pause-circle-o" aria-hidden="true"></i></button>
+          </ng-template>
+        </mat-cell>
+      </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+</mat-table>
+
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons>
+</mat-paginator>
+      
+</div>
+</div>
+</div>
+</div>
+</div>

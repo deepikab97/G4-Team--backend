@@ -1,0 +1,160 @@
+<div class="container-fluid py-3">
+    <div class="row">
+        <div class="col-md-9 mx-auto">
+            <div class="card card-body ">
+
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <h2 class="text-center">Registration</h2>
+                    <div class="form-group">
+                        <label for="firstName" class="col-sm-3 control-label">First Name*</label>
+                        <div class="col-sm-9">
+                            <input formControlName="firstName" type="text" name="firstName" id="firstName"
+                                placeholder="First Name" class="form-control" required ngModel autofocus
+                                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+
+                            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                <div *ngIf="f.firstName.errors.required">Please enter first name </div>
+                                <div *ngIf="f.firstName.errors.minlength">First name should have atleast 3 characters
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="col-sm-3 control-label">Last Name*</label>
+                        <div class="col-sm-9">
+                            <input formControlName="lastName" type="text" name="lastName" id="lastName"
+                                placeholder="Last Name" class="form-control" required ngModel autofocus
+                                [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                <div *ngIf="f.lastName.errors.required">Please enter last name </div>
+                                <div *ngIf="f.lastName.errors.minlength">Last name should have atleast 3 characters
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-3 control-label">Email* </label>
+                        <div class="col-sm-9">
+                            <input formControlName="email" type="email" required name="email" id="email"
+                                placeholder="Email" class="form-control" required ngModel name="email"
+                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">Please enter email </div>
+                                <div *ngIf="f.email.errors.email">Please enter valid email address</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-3 control-label">Password*</label>
+
+                        <div class="input-group col-sm-9">
+                            <input formControlName="password" [type]="fieldTextType ? 'text' : 'password'" required
+                                name="password" id="password" placeholder="Password" class="form-control" ngModel
+                                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa" [ngClass]="{
+                                        'fa-eye-slash': !fieldTextType,
+                                        'fa-eye': fieldTextType
+                                      }" (click)="toggleFieldTextType()"></i>
+                                </span>
+                            </div>
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Please enter password </div>
+                                <div *ngIf="f.password.errors.minlength"> Password must be at least 4 characters long
+                                </div>
+                                <div *ngIf="f.password.errors.maxlength">Password should not exceed 8 characters</div>
+                                <div *ngIf="f.password.errors.pattern">Password must contain atleast a uppercase,a
+                                    lowercase,a number,a special character and at least 8 characters and at most 20
+                                    characters</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="birthDate" class="col-sm-3 control-label">Date of Birth*</label>
+                        <div class="col-sm-9">
+                            <input formControlName="birthDate" type="date" required name="birthDate" id="birthDate"
+                                class="form-control" ngModel
+                                [ngClass]="{ 'is-invalid': submitted && f.birthDate.errors }" />
+                            <div *ngIf="submitted && f.birthDate.errors" class="invalid-feedback">
+                                <div *ngIf="f.birthDate.errors.required">Please enter birthdate </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="birthDate" class="col-sm-3 control-label">Date of Birth*</label> 
+        
+                        <mat-form-field>
+                            <input matInput  class="form-control" formControlName="birthDate" [matDatepicker]="picker" name="birthDate" id="birthDate" [max]="today" [min]="tomorrow"  ngModel>
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        
+                        </div>
+                   
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Gender</label>
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label class="radio-inline">
+                                        <input formControlName="gender" type="radio" name="gender" value="FEMALE"
+                                            ngModel [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" />Female
+                                    </label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="radio-inline">
+                                        <input formControlName="gender" type="radio" name="gender" value="MALE" ngModel
+                                            [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" />
+                                        Male
+                                    </label>
+                                </div>
+                            </div>
+                            <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                                <div *ngIf="f.gender.errors.required">Please enter first name </div>
+
+                            </div>
+                        </div>
+                    </div> <!-- /.form-group -->
+                    <div class="form-group">
+                        <label for="phoneNumber" class="col-sm-3 control-label">Primary number* </label>
+                        <div class="col-sm-9">
+                            <input formControlName="primary" type="number" required name="primary" id="phoneNumber"
+                                placeholder="Phone number" class="form-control" ngModel
+                                [ngClass]="{ 'is-invalid': submitted && f.primary.errors }" />
+                            <div *ngIf="submitted && f.primary.errors" class="invalid-feedback">
+                                <div *ngIf="f.primary.errors.required">Please enter primary mobile number </div>
+                                <div *ngIf="f.primary.errors.pattern">Mobile number should not exceed than 10 digit
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber2" class="col-sm-3 control-label">Secondary number </label>
+                        <div class="col-sm-9">
+                            <input formControlName="secondary" type="number" name="secondary" id="phoneNumber2"
+                                placeholder="Secondary number" class="form-control" ngModel
+                                [ngClass]="{ 'is-invalid': submitted && f.secondary.errors }" />
+                            <div *ngIf="submitted && f.secondary.errors" class="invalid-feedback">
+                                <div *ngIf="f.secondary.errors.required">Please enter secondary mobile number </div>
+
+                                <div *ngIf="f.secondary.errors.pattern">Mobile number should not exceed than 10 digit
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <span class="help-block">*Required fields</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </div>
+                </form> <!-- /form -->
+            </div> <!-- ./container -->
+        </div>
+    </div>
+</div>

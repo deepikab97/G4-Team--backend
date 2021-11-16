@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <mat-card>
+                <h3>Requested page not found!</h3>
+             <mat-card-content>
+
+             </mat-card-content>
+                <div *ngIf="userrole==='ROLE_MEMBER'">
+                    <button mat-stroked-button color="info" (click)="memberNavigate()">Go to home</button>
+                </div>
+                <div *ngIf="userrole==='ROLE_MANAGER'">
+                    <button mat-stroked-button color="info" (click)="managerNavigate()">Go to home</button>
+                </div>
+                <div *ngIf="userrole==='ROLE_ADMIN'">
+                    <button mat-stroked-button color="info" (click)="adminNavigate()">Go to home</button>
+                </div>
+              </mat-card>
+           
+        </div>
+    </div>
+</div>

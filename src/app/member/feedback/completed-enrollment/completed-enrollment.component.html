@@ -1,0 +1,53 @@
+
+
+<div class="container-fluid pt-5 padding pr-5 pl-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+      
+      <div class="card-body">
+  
+  
+  <h3 class="text-info text-center">
+    Feedback
+  </h3>
+  
+    <p>{{message}}</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Plan</th>
+                            <th>Sport</th>
+                            <th>Start Date </th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tr *ngFor="let enrollment of enrollments">
+                        <td class="text-center">{{ enrollment.planName }}</td>
+                        <td>{{ enrollment.planSportName  }}</td>
+                        <td>{{ enrollment.startDate }}</td>
+                        <td>{{ enrollment.status }}</td>
+                        <td>
+                            <button mat-stroked-button class="btn-outline-success" *ngIf="!enrollment.commented"
+                                (click)="commentOnPlan(enrollment.planId,enrollment.planName)">Add Comment  <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                            <button mat-stroked-button class="btn-outline-info" *ngIf="enrollment.commented"
+                                (click)="viewMemberComment(enrollment.planId,enrollment.planName)">View Comment <i class="fa fa-info-circle" aria-hidden="true"></i> </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+</div>
+</div>
+</div>
+</div>
+

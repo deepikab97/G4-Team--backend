@@ -1,0 +1,26 @@
+.text-center {
+    text-align: center;
+    vertical-align: middle;
+    line-height: normal;
+  }
+  
+  .margin-auto {
+    margin: auto;
+  }
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+  }
+  .footer-row {
+    background-color: rgba(45, 46, 39, 0.842) !important ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 20vh;
+    text-align: center;
+  }

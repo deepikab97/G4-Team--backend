@@ -1,0 +1,11 @@
+.mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button{
+    min-width: inherit;
+  }
+  .mat-header-cell,h6, input mat-input-element mat-form-field-autofill-control cdk-text-field-autofill-monitored {
+    color: black;
+    font-weight: 600;
+  }
+  .mat-raised-button {
+    min-width: inherit;
+    border-radius: 10px;
+  }

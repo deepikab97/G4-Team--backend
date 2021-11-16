@@ -1,0 +1,87 @@
+
+.cross {
+    padding: 10px;
+    color: lightseagreen;
+    cursor: pointer;
+    font-size: 23px
+}
+
+.cross i {
+    margin-top: -5px;
+    cursor: pointer
+}
+
+.comment-box {
+    padding: 5px
+}
+
+.comment-area textarea {
+    resize: none;
+    border: 1px solid lightseagreen;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #ffffff;
+    outline: 0;
+    box-shadow: 0 0 0 1px lightseagreen !important
+}
+
+.send {
+    color: #fff;
+    background-color: lightseagreen;
+    border-color: lightseagreen
+}
+
+.send:hover {
+    color: #fff;
+    background-color: lightseagreen;
+    border-color: lightseagreen;
+}
+
+.rating {
+    display: inline-flex;
+    margin-top: -10px;
+    flex-direction: row-reverse
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: 28px;
+    font-size: 35px;
+    color: lightseagreen;
+    cursor: pointer
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}
+
+.padding{
+    padding-bottom: 10rem;
+}
+.mat-stroked-button {
+    min-width: inherit;
+    border-radius: 30px;
+  }
+  

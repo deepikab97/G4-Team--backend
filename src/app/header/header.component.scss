@@ -1,0 +1,11 @@
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .nav-hide{
+        display: none;
+    }
+  }

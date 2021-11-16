@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 text-center mx-auto pt-5  padding">
+            <mat-card>
+          
+              <h3 class="pb-4">Receipt</h3>
+                <mat-card-content>
+                <h6>
+                  Name: {{ userName }}
+                </h6>
+            
+                <h6>
+                    Plan:  {{ planName }}
+                </h6>
+                <h6>
+                    Start Date:  {{ startDate }}
+                </h6>
+                <h6>
+                    End Date:  {{ endDate }}
+                </h6>
+                <h6>
+                    Amount Paid:  {{ amountPaid }}
+                </h6>
+                <h6>
+                   Enrollment Status:   {{ status }}
+                </h6>
+                <h6>
+                    Applied Date: {{ appliedDate }}
+                  </h6>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-stroked-button color="primary" (click)="exportAsPdf()">Export as pdf</button>
+                  </mat-card-actions>
+              </mat-card>
+           
+        </div>
+    </div>
+</div>

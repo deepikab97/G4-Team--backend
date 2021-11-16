@@ -1,0 +1,80 @@
+<div class="container-fluid pt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div *ngIf="message != null">
+          <div class="alert" [class.visible]="isVisible"> 
+            {{message}}
+          </div>
+        </div>
+    <div class="card-body">
+
+
+      <h3  class="text text-center text-info">Enrollments</h3>
+
+     
+          <mat-form-field >
+            <h5 class="text-dark">Filter</h5>
+            <input matInput (keyup)="applyFilter($event.target.value)" >
+          </mat-form-field>
+      <mat-table #table [dataSource]="dataSource" matSort matSortActive="status" matSortDirection="desc">
+        <ng-container matColumnDef="planName">
+          <mat-header-cell *matHeaderCellDef class="text text-dark"> <h6>Plan</h6></mat-header-cell>
+          <mat-cell *matCellDef="let enrollment"> {{enrollment.planName}} </mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="planSportName">
+            <mat-header-cell *matHeaderCellDef class="text text-dark "> <h6>Sport</h6></mat-header-cell>
+            <mat-cell *matCellDef="let enrollment"> {{enrollment.planSportName}} </mat-cell>
+          </ng-container>
+         
+          <ng-container matColumnDef="startTime">
+            <mat-header-cell  *matHeaderCellDef class="text text-dark nav-hide"> <h6>Batch Time</h6> </mat-header-cell>
+            <mat-cell class="nav-hide" *matCellDef="let enrollment"> {{enrollment.startTime}}</mat-cell>
+          </ng-container>
+          &nbsp;
+            <ng-container matColumnDef="startDate">
+              <mat-header-cell *matHeaderCellDef class="text text-dark  nav-hide"> <h6>Start Date</h6> </mat-header-cell>
+              <mat-cell class="nav-hide"  *matCellDef="let enrollment"> {{enrollment.startDate}} </mat-cell>
+            </ng-container>
+        
+            <ng-container matColumnDef="status">
+              <mat-header-cell *matHeaderCellDef class="text text-dark  nav-hide"> <h6>Status</h6></mat-header-cell>
+              <mat-cell class="nav-hide" *matCellDef="let enrollment" > {{enrollment.status}} </mat-cell>
+            </ng-container>
+      
+            <ng-container matColumnDef="action">
+              <mat-header-cell *matHeaderCellDef class="text text-dark "> <h6>Action</h6> </mat-header-cell>
+              <mat-cell *matCellDef="let enrollment">
+                   
+  
+                      <div> 
+                      <button mat-raised-button  (click)="viewReceipt(enrollment.id)" class="btn-outline-success"><span class="show-icons">Receipt</span> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></button>
+                    </div>
+                    &nbsp; 
+                    <div *ngIf="enrollment.status === 'COMPLETED'">  
+                      <button mat-raised-button  class="btn-outline-info" (click)="renew(enrollment.planId)">Renew <i class="fa fa-repeat" aria-hidden="true"></i></button>
+                     </div>  
+                     &nbsp;
+                     <div *ngIf="enrollment.status === 'WAITING'">  
+                      <button mat-raised-button class="btn-outline-warning "  (click)="selectBatch(enrollment.id)">Change Batch <i class="fa fa-clock-o" aria-hidden="true"></i>
+                      </button>
+                     </div>
+                   
+              </mat-cell>
+            </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          
+      </mat-table>
+      
+      <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons>
+      </mat-paginator>
+      
+      
+    </div>
+  </div>
+</div>
+</div>
+</div>

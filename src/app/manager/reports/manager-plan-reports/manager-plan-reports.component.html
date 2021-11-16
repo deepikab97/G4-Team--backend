@@ -1,0 +1,53 @@
+<div class="container-fluid pt-5 pb-5 pr-5 pl-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+
+        <div class="card-body">
+          <div class="flex">
+            <div class="chartt">
+
+              <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+              </canvas>
+            </div>
+
+            <div class="matty">
+              <h3 class="text text-info text-center">Plan Report</h3>
+
+              <mat-form-field>
+                <h5 class="text-dark ">Filter</h5>
+                <input matInput (keyup)="applyFilter($event.target.value)">
+              </mat-form-field>
+              <mat-table #table [dataSource]="dataSource">
+                <ng-container matColumnDef="planName">
+                  <mat-header-cell *matHeaderCellDef> <h6>Plan</h6> </mat-header-cell>
+                  <mat-cell *matCellDef="let reportPlan"> {{reportPlan.planName}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="sportName">
+                  <mat-header-cell *matHeaderCellDef> <h6>Sport</h6> </mat-header-cell>
+                  <mat-cell *matCellDef="let reportPlan"> {{reportPlan.sportName}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="enrollmentCount">
+                  <mat-header-cell *matHeaderCellDef> <h6>Enrollments</h6> </mat-header-cell>
+                  <mat-cell *matCellDef="let reportPlan"> {{reportPlan.enrollmentCount}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="active">
+                  <mat-header-cell *matHeaderCellDef> <h6>Active</h6> </mat-header-cell>
+                  <mat-cell *matCellDef="let reportPlan"> {{reportPlan.active}} </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+              </mat-table>
+            </div>
+          </div>
+          <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons>
+          </mat-paginator>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

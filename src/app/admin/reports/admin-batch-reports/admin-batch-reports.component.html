@@ -1,0 +1,73 @@
+
+
+ 
+
+  <div class="container-fluid pt-2 pb-5 pr-8 pl-1">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+      
+      <div class="card-body">
+        <div class="flex">
+        <div  class="chartt">
+          <!-- <div style="display: block;"> -->
+              <canvas baseChart 
+                [data]="pieChartData" 
+                [labels]="pieChartLabels" 
+                [chartType]="pieChartType"
+                [options]="pieChartOptions"
+                [plugins]="pieChartPlugins"
+                [legend]="pieChartLegend">
+              </canvas>
+          <!-- </div> -->
+        </div>
+
+  <div class="matty">
+
+<h3 class="text text-info text-center">Batch Report</h3>
+
+    <mat-form-field>
+      <h5 class="text-dark">Filter</h5>
+      <input matInput (keyup)="applyFilter($event.target.value)">
+    </mat-form-field>
+<mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="startTime">
+      <mat-header-cell *matHeaderCellDef> <h6>Start Time</h6> </mat-header-cell>
+      <mat-cell *matCellDef="let batchReport"> {{batchReport.startTime}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="endTime">
+      <mat-header-cell *matHeaderCellDef> <h6>End Time </h6></mat-header-cell>
+      <mat-cell *matCellDef="let batchReport"> {{batchReport.endTime}} </mat-cell>
+    </ng-container>
+      <ng-container matColumnDef="size">
+        <mat-header-cell *matHeaderCellDef> <h6>Size </h6></mat-header-cell>
+        <mat-cell *matCellDef="let batchReport"> {{batchReport.size}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="availability">
+        <mat-header-cell *matHeaderCellDef> <h6>Available</h6> </mat-header-cell>
+        <mat-cell *matCellDef="let batchReport"> {{batchReport.availability}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="sport">
+        <mat-header-cell *matHeaderCellDef> <h6>Sport</h6> </mat-header-cell>
+        <mat-cell *matCellDef="let batchReport"> {{batchReport.sport}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="enrollment">
+        <mat-header-cell *matHeaderCellDef> <h6>Enrollment</h6> </mat-header-cell>
+        <mat-cell *matCellDef="let batchReport"> {{batchReport.enrollment}} </mat-cell>
+      </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+</mat-table>
+
+</div>
+</div>
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons>
+</mat-paginator>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+

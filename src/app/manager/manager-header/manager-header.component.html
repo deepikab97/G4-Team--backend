@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent ">
+  <a class="navbar-brand text-dark "><i class="fa fa-trophy fa-2x" aria-hidden="true"></i> DECCAN.COM</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item pl-5 pt-2 pr-4">
+        <a class="nav-link text-dark "  routerLink="enrollment-request" >Home <i class="fa fa-home" aria-hidden="true"></i></a>
+      </li>
+      <li class="nav-item pt-3 pr-3 pl-5">
+        <div class="dropdown">
+          <mat-label class="text-dark">Plans <i class="fa fa-calendar-plus-o" aria-hidden="true"></i></mat-label>
+           <div class="dropdown-content">
+            <mat-option routerLink="add-plan">Add Plan <i class="fa fa-plus-circle" aria-hidden="true"></i></mat-option>
+            <mat-option routerLink="view-plans" >View Plans <i class="fa fa-line-chart" aria-hidden="true"></i></mat-option>
+
+           </div>
+         </div>
+      </li>
+      <li class="nav-item pt-3 pr-3  pl-5">
+        <div class="dropdown">
+          <mat-label class="text-dark">Batches <i class="fa fa-clock-o" aria-hidden="true"></i></mat-label>
+           <div class="dropdown-content">
+              <mat-option routerLink="add-batch">Add Batch <i class="fa fa-plus-circle" aria-hidden="true"></i></mat-option>
+              <mat-option routerLink="view-batches" >View Batches <i class="fa fa-th-list" aria-hidden="true"></i></mat-option>
+
+           </div>
+         </div>
+      </li>
+      <li class="nav-item pt-3 pr-3  pl-5">
+        <div class="dropdown">
+          <mat-label class="text-dark">Reports <i class="fa fa-pie-chart" aria-hidden="true"></i></mat-label>
+     
+           <div class="dropdown-content">
+            <mat-option routerLink="plan-report">Plan <i class="fa fa-calendar-plus-o" aria-hidden="true"></i></mat-option>
+            <mat-option routerLink="batch-report" >Batch <i class="fa fa-clock-o" aria-hidden="true"></i></mat-option>
+            <mat-option routerLink="enrollment-report">Enrollment <i class="fa fa-th-list" aria-hidden="true"></i></mat-option>
+           </div>
+         </div>
+      </li>
+      <li class="nav-item pt-3 pr-3  pl-5">
+        <div class="dropdown">
+         <div>Hi {{ userName }} <i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
+    
+          <div class="dropdown-content">
+            <mat-option routerLink="view-profile">View Profile <i class="fa fa-user-circle" aria-hidden="true"></i></mat-option>
+            <mat-option routerLink="change-password" >Edit Password <i class="fa fa-cog" aria-hidden="true"></i></mat-option>
+            <mat-option routerLink="health-info">Health Info <i class="fa fa-heartbeat" aria-hidden="true"></i></mat-option>
+            <mat-option  routerLink="/login" (click)="this.app.logout()">Logout <i class="fa fa-sign-out" aria-hidden="true"></i></mat-option>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,60 @@
+
+
+<div class="card">
+  <div class="alert" [class.visible]="isVisible"> 
+    {{message}}
+  </div>
+    <div class="card-body">
+<h3 class="text text-info text-center">Plans</h3>
+
+    <mat-form-field>
+      <h5 class="text-dark ">Filter</h5>
+      <input matInput (keyup)="applyFilter($event.target.value)">
+    </mat-form-field>
+<mat-table #table [dataSource]="dataSource" matSort matSortActive="active" matSortDirection="desc">
+    <ng-container matColumnDef="planName">
+      <mat-header-cell *matHeaderCellDef>  <h6>Plan</h6> </mat-header-cell>
+      <mat-cell *matCellDef="let plan"> {{plan.planName}} </mat-cell>
+    </ng-container>
+      <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef><h6> Fees</h6> </mat-header-cell>
+        <mat-cell *matCellDef="let plan"> {{plan.amount | currency: "INR"}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="duration">
+
+        <mat-header-cell *matHeaderCellDef><h6>Duration (in days)</h6> </mat-header-cell>
+
+    
+        <mat-cell *matCellDef="let plan"> {{plan.duration}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="sportName">
+        <mat-header-cell *matHeaderCellDef><h6>Sport </h6></mat-header-cell>
+        <mat-cell *matCellDef="let plan"> {{plan.sportName}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef><h6>Action</h6>  </mat-header-cell>
+        <mat-cell *matCellDef="let plan">
+            <div *ngIf="plan.active === true; then thenBlock else elseBlock">    
+            </div>
+            <ng-template #thenBlock>
+                <button mat-raised-button class="btn-outline-info" (click)="updatePlan(plan.id)"><span class="show-icons">Update </span> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                &nbsp;
+                <button mat-raised-button class="btn-outline-danger" (click)="disablePlan(plan.id)"><span class="show-icons">Disable </span> <i class="fa fa-trash" aria-hidden="true"></i></button>
+            </ng-template>
+            <ng-template #elseBlock>
+               <button mat-raised-button class="btn-outline-success" (click)="enablePlan(plan.id)"><span class="show-icons">Enable </span><i class="fa fa-check-square-o" aria-hidden="true"></i></button>
+          </ng-template>
+        </mat-cell>
+      </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+</mat-table>
+
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons>
+</mat-paginator>
+
+
+</div>
+</div>    

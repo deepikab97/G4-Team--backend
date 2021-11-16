@@ -1,0 +1,68 @@
+<div class="alert" [class.visible]="isVisible"> 
+  {{message}}
+</div>
+<h3 class="text-center text-info">Health-Information</h3>
+
+<div class="col-md-6 offset-md-3 shadow-lg">
+  <form [formGroup]="healthInfoForm" (ngSubmit)="onSubmit()">
+   
+    <div class="form-group ">     
+      <label for="height">Height (in cm)</label>
+      <input
+        formControlName="height"
+        type="number"
+        class="form-control"
+        id="height"
+        [(ngModel)]="healthInfo.height"
+        name="height"
+        placeholder="Height in cm" required
+        [ngClass]="{ 'is-invalid': submitted && f.height.errors }"/>
+
+        <div *ngIf="submitted && f.height.errors" class="invalid-feedback">
+          <div *ngIf="f.height.errors.required">Please enter height </div>
+          <div *ngIf="f.height.errors.min">Height should be atleast 60</div>
+          <div *ngIf="f.height.errors.max">Height should not exceed 244</div>
+       </div>
+    </div>
+
+    <div class="form-group">
+      <label for="weight">Weight (in kg)</label>
+      <input
+        formControlName="weight"
+        type="number"
+        class="form-control"
+        id="weight"
+        [(ngModel)]="healthInfo.weight"
+        name="weight"
+        placeholder="Weight in kg" required
+        [ngClass]="{ 'is-invalid': submitted && f.weight.errors }"/>
+
+        <div *ngIf="submitted && f.weight.errors" class="invalid-feedback">
+          <div *ngIf="f.weight.errors.required">Please enter weight</div>
+          <div *ngIf="f.weight.errors.min">Weight should be atleast 15</div>
+          <div *ngIf="f.weight.errors.max">Weight should not exceed 260</div>
+       </div>
+    </div>
+
+     <div class="form-group">
+          <mat-form-field>
+            <mat-select 
+            formControlName="bloodGroup"
+            placeholder="Select Blood-Group" 
+            name="bloodGroup"
+            id="bloodGroup" 
+            [(ngModel)]="healthInfo.bloodGroup"
+            [ngClass]="{ 'is-invalid': submitted && f.bloodGroup.errors }"
+            >
+              <mat-option *ngFor="let bloodGroup of bloodGroups" [value]="bloodGroup.value">{{bloodGroup.viewValue}}
+              </mat-option>
+              </mat-select>
+          </mat-form-field>
+          <div *ngIf="submitted && f.bloodGroup.errors" class="invalid-feedback">
+            <div *ngIf="f.bloodGroup.errors.required">Please select Blood-Group</div>
+         </div>
+      </div> 
+
+    <button class="btn btn-outline-success mb-3" type="submit">Save</button>
+  </form>
+</div>

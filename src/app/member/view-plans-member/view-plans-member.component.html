@@ -1,0 +1,51 @@
+<div class="container-fluid pt-3">
+  <h3 class="text-light text-center">
+    Plans
+  </h3>
+  <mat-form-field class="d-flex">
+    <h5 class="text-light ">Filter</h5>
+    <input class="justify-content-center" matInput (keyup)="applyFilter($event.target.value)">
+  </mat-form-field>
+  <div class="row">
+    <div class="col-md-12 flex-wrap d-flex">
+
+      <mat-card class="card justify-content-between col-md-3  text-center" *ngFor="let p of plan | async">
+
+        <div class="card-header text-info font-weight-bolder">
+          <h4> {{p.planName}}</h4>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title text-dark"> {{p.sportName}}</h5>
+          <h5 class="card-title text-success"><i class="fa fa-inr" aria-hidden="true"></i> {{p.amount}}</h5>
+          <h5 class="card-title"> {{p.duration}} (days)</h5>
+          <button mat-raised-button class="btn-info btn-block" (click)="buyPlan(p.id)">
+            <h4>Buy Now !</h4>
+          </button>
+        </div>
+        <div class="card-footer">
+
+          <button class="btn " mat-button (click)="likePlan(p.id)">
+
+            <mat-icon matBadge="{{p.likesCount}}">thumb_up</mat-icon>
+
+          </button>
+
+
+          <button class="btn " mat-button (click)="showComments(p.id,p.planName)">
+            <mat-icon matBadge="{{p.commentsCount}}">comment</mat-icon>
+          </button>
+        </div>
+
+      </mat-card>
+
+
+    </div>
+    <div class="justify-content-end">
+
+      <mat-paginator [pageSize]="6" [pageSizeOptions]="[5, 10, 15, 20]"
+        showFirstLastButtons>
+      </mat-paginator>
+    </div>
+
+  </div>
+</div>

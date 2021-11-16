@@ -1,0 +1,55 @@
+<div class="container-fluid pt-5 pb-5 pr-5 pl-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+    
+    <div class="card-body">
+    <div class="matty">
+        <h3 class="text text-info text-center">Enrollment Report</h3>
+        
+            <mat-form-field>
+              <h5 class="text-dark">Filter</h5>
+              <input matInput (keyup)="applyFilter($event.target.value)">
+            </mat-form-field>
+        <mat-table #table [dataSource]="dataSource">
+            <ng-container matColumnDef="planSportName">
+              <mat-header-cell *matHeaderCellDef> <h6>Sport</h6> </mat-header-cell>
+              <mat-cell *matCellDef="let reportEnrollment"> {{reportEnrollment.planSportName}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="planName">
+              <mat-header-cell *matHeaderCellDef> <h6>Plan</h6> </mat-header-cell>
+              <mat-cell *matCellDef="let reportEnrollment"> {{reportEnrollment.planName}} </mat-cell>
+            </ng-container>
+            
+              <ng-container matColumnDef="startDate">
+                <mat-header-cell *matHeaderCellDef> <h6>Start Date </h6></mat-header-cell>
+                <mat-cell *matCellDef="let reportEnrollment"> {{reportEnrollment.startDate}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="endDate">
+                <mat-header-cell *matHeaderCellDef> <h6>End Date</h6> </mat-header-cell>
+                <mat-cell *matCellDef="let reportEnrollment"> {{reportEnrollment.endDate}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef> <h6>Status</h6> </mat-header-cell>
+                <mat-cell *matCellDef="let reportEnrollment"> {{reportEnrollment.status}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="userName">
+                <mat-header-cell *matHeaderCellDef> <h6>User Name</h6> </mat-header-cell>
+                <mat-cell *matCellDef="let reportEnrollment"> {{reportEnrollment.userName}} </mat-cell>
+              </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            
+        </mat-table>
+        
+        <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons>
+        </mat-paginator>
+        </div>
+    
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+

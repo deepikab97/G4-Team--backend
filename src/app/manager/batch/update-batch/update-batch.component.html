@@ -1,0 +1,53 @@
+<div class="container-fluid pt-5 pb-5 pr-5 pl-5">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+    
+        <div class="card-body">
+          <div class="alert" [class.visible]="isVisible"> 
+            {{message}}
+          </div>
+<h3 class="text-center text-info">Batch Details</h3>
+<div class="col-md-6 offset-md-3 shadow-lg">
+  <form [formGroup]="batchForm" (ngSubmit)="onSubmit()">
+
+   <div class="form-group"> 
+    <label for="sportName">Sport</label>
+    <input formControlName="sportName" type="text" class="form-control" name="sportName" id="sportName" readonly [(ngModel)]="batch.sportName" >
+   </div>
+    
+    <div class="form-group ">    
+      <label for="startTime">Start Time</label>
+      <input formControlName="startTime" type="time" class="form-control" name="startTime" id="startTime" readonly [(ngModel)]="batch.startTime"/>
+    </div>
+
+    <div class="form-group ">    
+      <label for="endTime">End Time</label>
+      <input formControlName="endTime" type="time" class="form-control" name="endTime" id="endTime" readonly [(ngModel)]="batch.endTime"/>
+
+    </div>
+    
+    <div class="form-group">
+      <label for="size">Size</label>
+      <input formControlName="size" type="number" class="form-control"  name="size"  id="size" required [(ngModel)]="batch.size" name="size"
+         min="10" max="50"  [ngClass]="{ 'is-invalid': submitted && f.size.errors }"/>
+    
+         <div *ngIf="submitted && f.size.errors" class="invalid-feedback">
+          <div *ngIf="f.size.errors.required">Size is required</div>
+          <div *ngIf="f.size.errors.min">Size should be atleast 10</div>
+          <div *ngIf="f.size.errors.max">Size should not exceed 50</div>
+      </div>
+    </div>
+
+    <button class="btn btn-outline-success mb-3" type="submit">Update Batch</button>
+  </form>
+
+</div>
+
+
+
+</div>
+</div>    
+</div>
+</div>
+</div>

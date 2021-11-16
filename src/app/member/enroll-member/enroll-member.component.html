@@ -1,0 +1,51 @@
+<div class="container-fluid pt-5 pb-5 pr-5 pl-5 padding">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+
+        <div class="card-body">
+          <div class="alert" [class.visible]="isVisible">
+            {{message}}
+          </div>
+          <h3 class="text-center text-info">Enroll</h3>
+          <div class="col-md-6 offset-md-3 shadow-lg">
+            <form (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="planName">Plan Name</label>
+                <input readonly type="text" class="form-control" id="planName" [(ngModel)]="enrollment.planName"
+                  name="planName" value="enrollment.planId" />
+              </div>
+
+
+              <div class="form-group">
+                <label for="amount">Amount</label>
+                <input readonly type="number" class="form-control" id="amount" [(ngModel)]="enrollment.amountPaid"
+                  value="enrollment.amountPaid" name="amount" />
+              </div>
+
+              <div class="form-group">
+                <label for="batch">Batch</label>
+                <select class="form-control" id="batchId" name="batchId" [(ngModel)]="enrollment.batchId">
+                  <option>Select Batch</option>
+                  <option *ngFor="let batch of batches" value="{{batch.id}}">
+                    {{batch.startTime}}
+                  </option>
+                </select>
+              </div>
+
+              <mat-form-field>
+
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" [min]="today" [max]="tomorrow"
+                  name="startDate" id="startDate" [(ngModel)]="enrollment.startDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+
+              <button class="btn btn-outline-success mb-3" type="submit">Enroll</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

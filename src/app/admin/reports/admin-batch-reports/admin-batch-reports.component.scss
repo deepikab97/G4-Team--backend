@@ -1,0 +1,16 @@
+.flex{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+.matty{
+    width: 70%;
+}
+.chartt{
+    width: 30%;
+    height: 50%;
+}
+.mat-header-cell,h6, input mat-input-element mat-form-field-autofill-control cdk-text-field-autofill-monitored {
+    color: black;
+    font-weight: 600;
+  }

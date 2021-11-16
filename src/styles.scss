@@ -1,0 +1,101 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body {
+    font-family: 'Jura', sans-serif !important;
+  }
+
+.card, mat-paginator,mat-form-field,mat-option,mat-label,mat-card-content,a ,mat-header-cell {
+  opacity: 0.8;
+  font-weight: bold;
+}
+
+.my-select mat-select {
+ 
+  /*padding: 6px 0px 6px 0px;*/ /* NO Left and right padding*/
+  padding: 6px 10px 6px 10px;   /* 10px left and right padding*/
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+div,mat-form-field,mat-option,mat-label, mat-table,button{
+  font-family: 'Jura', sans-serif !important;
+}
+.mat-header-cell, h6 {
+  color: black;
+  font-weight: 600;
+}
+@media only screen and (max-width: 600px) {
+  .nav-hide{
+      display: none;
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .show-icons{
+      display: none;
+  }
+}
+
+
+.alert  {
+  position: fixed;
+  top: 0;
+  right: 0.5rem;
+  border:1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  padding: 2rem;
+  background: #fff;
+  color:black;
+  box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.5);
+  transition:  all 0.2s ease-in-out;
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(1.25rem);
+}
+
+
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  
+
+  .background { 
+    background: url('http://localhost:4200/assets/images/football.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    }

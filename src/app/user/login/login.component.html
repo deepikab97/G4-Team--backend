@@ -1,0 +1,60 @@
+<div class="container-fluid bg-transparent">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body ">
+                <span class="text-danger col-sm-12">{{message}}</span>
+                <form method="post" #loginform="ngForm" *ngIf="flag===0" (ngSubmit)="Login(loginform)">
+                    <div class="form-group">
+                        <label for="email" class="col-sm-6 control-label">Email</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="email" [(ngModel)]='email' required id="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-6 control-label">Password</label>
+                        <div class="col-sm-9">
+                            <input type="password" name="password" [(ngModel)]='password' required id="password">
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="submit" class="btn btn-primary" value="Login">
+                        <a routerLink="/forgot-password">Forgot password?</a>
+                    </div>
+                    <div class="col-sm-9">
+                        <span>New here?</span>
+                        <a routerLink="/register">Register</a>
+                    </div>
+                </form>
+                <div *ngIf="flag==1">
+                    <button class="btn btn-primary" (click)="showUnlockBtn()">Unlock Account</button>
+                    <div *ngIf="unlockAccount">
+                        <div class="form" >
+                            <form method="post" #forgotPasswordForm="ngForm" (ngSubmit)="generateOtp(forgotPasswordForm)">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input [(ngModel)]="email" id="email" type="email" name="email" class="form-control">
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-success" value="Send OTP">
+                                    </div>
+                                </div>
+                            </form>
+    
+                        </div>
+    
+                        <div class="form" >
+                            <form method="post" #validateOtpForm="ngForm" (ngSubmit)="validateOtp(validateOtpForm)">
+                                <div class="form-group">
+                                    <label for="otp">Enter OTP</label>
+                                    <input [(ngModel)]="otp" id="otp" name="otp" type="text" class="form-control"
+                                        [readonly]="isReadable">
+                                    <input type="submit" class="btn btn-success" value="Validate OTP">
+                                </div>
+                            </form>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

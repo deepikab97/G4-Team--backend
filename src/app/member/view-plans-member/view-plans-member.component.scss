@@ -1,0 +1,35 @@
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color:rgb(255,255,255);
+}
+.mat-raised-button{
+  border-radius: 20px;
+}
+.mat-card {
+  border-radius: 10px;
+  margin: 0.8rem;
+  min-width: 28vw;
+}
+button{
+  span{
+    font-weight: bolder;
+  }
+}
+
+.btn-outline-info .btn-block .mat-raised-button .mat-button-base{
+  .mat-button-wrapper{
+    font-weight: bolder;
+  }
+}
+
+.card-header,.card-footer {
+  background-color: rgba(4.1, 2.1, 5, -1.97);
+ 
+}
+
+.padding{
+  padding-bottom: 10rem;
+}
+
+.justify-content-end{
+  margin-left: 470px;
+}

@@ -1,0 +1,28 @@
+
+ <div class="col-md-8 col-sm-12 padding">
+<div  class="card mt-4" >
+    <div class="card-body">
+      <h5 class="card-title">Health Information</h5>
+      <p class="card-text text-info"><abbr title="Body Mass Index">BMI</abbr> is a measure of body fat based on height and weight that applies to men and women.To know your <mark>CURRENT** BMI</mark> Please click on below button</p>
+      <button class="btn btn-outline-success mb-3 mt-2 ml-4" (click)="function_click()" >Check HealthInfo</button> 
+     <br><span  class="bg-info text-white">Your BMI: {{healthInfo.bmi}}&nbsp;&nbsp;{{status}}</span><br>
+     
+      
+      
+      <p class="text-info">{{message}}</p>
+      
+      <button class="btn btn-outline-success mb-3  ml-4" *ngIf="isShownForAdd" (click)="onPressForAdd()"  >Add HealthInfo</button>
+      <button class="btn btn-outline-success mb-3  ml-4" *ngIf="isShownForUpdate" (click)="onPressForUpdate()"  >Update HealthInfo</button>
+      
+      <div id="comp-render" *ngIf="displayForAdd">
+        <app-add-health-info></app-add-health-info>
+    </div>
+    
+    <div id="comp-render" *ngIf="displayForUpdate">
+       
+        <app-update-health-info></app-update-health-info>
+    </div>
+
+    </div>
+  </div>
+</div> 

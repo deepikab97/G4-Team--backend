@@ -1,0 +1,74 @@
+<div class="alert" [class.visible]="isVisible">
+  {{message}}
+</div>
+
+<div class="container-fluid pt-5 pb-5 pr-5 pl-5">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+
+        <div class="card-body">
+          <h3 class="card-title text-center text-info"> Add Plan</h3>
+         
+          <div class="col-md-6 offset-md-3 ">
+            <form [formGroup]="planForm" (ngSubmit)="onSubmit()">
+
+              <div class="form-group">
+                <label for="planName">Plan Name</label>
+                <input type="text" formControlName="planName" class="form-control" id="planName"
+                  [(ngModel)]="plan.planName" name="planName" required placeholder="Enter plan Name"
+                  [ngClass]="{ 'is-invalid': submitted && f.planName.errors }" />
+                <div *ngIf="submitted && f.planName.errors" class="invalid-feedback">
+                  <div *ngIf="f.planName.errors.required">Plan name is required</div>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="number" formControlName="amount" class="form-control" id="amount" [(ngModel)]="plan.amount"
+                  name="amount" placeholder="Enter amount" [ngClass]="{ 'is-invalid': submitted && f.amount.errors }" />
+                <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+                  <div *ngIf="f.amount.errors.required">Amount needs to be entered</div>
+                  <div *ngIf="f.amount.errors.min">Amount should not be less than 500 rupees</div>
+                  <div *ngIf="f.amount.errors.max">Amount should not be exceed than 50000 rupees</div>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label for="duration">Duration(in days)</label>
+                <input type="number" formControlName="duration" class="form-control" id="duration"
+                  [(ngModel)]="plan.duration" name="duration" placeholder="Enter duration (in days)"
+                  [ngClass]="{ 'is-invalid': submitted && f.duration.errors }" />
+                <div *ngIf="submitted && f.duration.errors" class="invalid-feedback">
+                  <div *ngIf="f.duration.errors.required">Duration is required</div>
+                  <div *ngIf="f.duration.errors.min">Plan duration must be at least 30 days long</div>
+                  <div *ngIf="f.duration.errors.max">Plan duration not exceed 90 days </div>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label for="sportId">Select Sport</label>
+                <select class="form-control" formControlName="sportId" id="sportId" name="sportId"
+                  [(ngModel)]="plan.sportId" [ngClass]="{ 'is-invalid': submitted && f.sportId.errors }">
+                  <option type="number" *ngFor="let sport of sports" value="{{sport.id}}">{{sport.sportName}} </option>
+                </select>
+                <div *ngIf="submitted && f.sportId.errors" class="invalid-feedback">
+                  <div *ngIf="f.sportId.errors.required">Sport is required</div>
+                </div>
+
+              </div>
+
+
+
+
+              <button class="btn btn-outline-success mb-3" type="submit">Add Plan <i class="fa fa-plus-square" aria-hidden="true"></i></button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
